@@ -18,17 +18,24 @@ class profile_beats::install {
   Apt::Pin <| |> -> Package <| |>
   Apt::Source <| |> -> Package <| |>
   class { 'filebeats':
-    prospectors              => [{
+    prospectors              => [
+    {
       'input_type' => 'log',
       'doc_type'   => 'log',
       'paths'      => ['/var/log/auth.log']
-                                  },
-                                  { 'input_type' => 'log',
-                                    'doc_type'   => 'apache',
-                                    'paths'      => ['/var/log/apache2/access.log', '/var/log/apache2/error.log'],
-                                    'fields'     => {'level' => 'debug', 'review' => 1}
-                                  }
-                                ],
+    },
+    {
+      'input_type' => 'log',
+      'doc_type'   => 'log',
+      'paths'      => ['/var/log/syslog']
+    },
+    {
+      'input_type' => 'log',
+      'doc_type'   => 'apache',
+      'paths'      => ['/var/log/apache2/access.log', '/var/log/apache2/error.log'],
+      'fields'     => {'level' => 'debug', 'review' => 1}
+    }
+    ],
     elasticsearch_proxy_host => $profile_beats::monitor_address,
   }
 
