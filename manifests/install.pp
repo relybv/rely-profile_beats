@@ -13,7 +13,7 @@ class profile_beats::install {
   } else {
     $monitor_address = $profile_beats::monitor_address
   }
-  notify {"Running with ${profile_beats::monitor_address} ":}
+  notify {"Logging address ${profile_beats::monitor_address} ":}
 
   Apt::Pin <| |> -> Package <| |>
   Apt::Source <| |> -> Package <| |>
@@ -29,7 +29,7 @@ class profile_beats::install {
                                     'fields'     => {'level' => 'debug', 'review' => 1}
                                   }
                                 ],
-    elasticsearch_proxy_host => $monitor_address,
+    elasticsearch_proxy_host => $profile_beats::monitor_address,
   }
 
 }
