@@ -7,10 +7,18 @@ class profile_beats::install {
   if $caller_module_name != $module_name {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
+
+  if $profile_beats::monitor_address == undef {
+    $monitor_address = localhost
+  } else {
+    $monitor_address = $profile_beats::monitor_address
+  }
+  notify {"Running with ${profile_beats::monitor_address} ":}
+
   Apt::Pin <| |> -> Package <| |>
   Apt::Source <| |> -> Package <| |>
   class { 'filebeats':
-    prospectors => [{
+    prospectors              => [{
       'input_type' => 'log',
       'doc_type'   => 'log',
       'paths'      => ['/var/log/auth.log']
@@ -21,7 +29,7 @@ class profile_beats::install {
                                     'fields'     => {'level' => 'debug', 'review' => 1}
                                   }
                                 ],
-    # elasticsearch_proxy_host => 'elasticsearchproxy.myserver.com',
+    elasticsearch_proxy_host => $monitor_address,
   }
 
 }
