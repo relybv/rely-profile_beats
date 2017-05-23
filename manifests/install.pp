@@ -19,7 +19,8 @@ class profile_beats::install {
   Apt::Source <| |> -> Package <| |>
 
   class { 'filebeat':
-    outputs => {
+    manage_repo => false,
+    outputs     => {
       'elasticsearch' => {
       'hosts' => [
         "http://${profile_beats::monitor_address}:9200",
