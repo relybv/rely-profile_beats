@@ -19,7 +19,7 @@ describe 'profile_beats' do
           it { is_expected.to contain_class('profile_beats::config') }
           it { is_expected.to contain_class('profile_beats::service') }
           it { is_expected.to contain_class('profile_beats::params') }
-          it { is_expected.to contain_class('filebeats') }
+          it { is_expected.to contain_class('filebeat') }
 
         end
       end
