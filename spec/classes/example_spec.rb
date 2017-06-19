@@ -21,6 +21,10 @@ describe 'profile_beats' do
           it { is_expected.to contain_class('profile_beats::params') }
           it { is_expected.to contain_class('filebeat') }
 
+          it { is_expected.to contain_apt__source('elasticrepo') }
+
+          it { is_expected.to contain_filebeat__prospector('syslogs') }
+
         end
       end
     end

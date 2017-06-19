@@ -13,7 +13,6 @@ class profile_beats::install {
   } else {
     $monitor_address = $profile_beats::monitor_address
   }
-  notify {"Logging address ${profile_beats::monitor_address} ":}
 
   Class['apt::update'] -> Package['filebeat']
 
