@@ -23,9 +23,9 @@ node {
          junit 'spec/reports/*.xml'
       }
       stage('Documentation') {
-         sh '/opt/puppetlabs/bin/puppet resource package yard provider=puppet_gem --no-color > doc.log'
-         sh '/opt/puppetlabs/bin/puppet module install puppetlabs-strings --no-color >> doc.log'
-         sh '/opt/puppetlabs/puppet/bin/puppet strings --no-color >> doc.log'
+         sh '/opt/puppetlabs/bin/puppet resource package yard provider=puppet_gem > doc.log'
+         sh '/opt/puppetlabs/bin/puppet module install puppetlabs-strings >> doc.log'
+         sh '/opt/puppetlabs/puppet/bin/puppet strings >> doc.log'
          publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: false, reportDir: 'doc', reportFiles: 'index.html', reportName: 'HTML Report'])
       }
       stage('Acceptance tests ubuntu 14.04') 
