@@ -9,6 +9,7 @@ fixtures:
     rspec_monitor: "git://github.com/pgomersbach/test-rspec_monitor.git"
     archive: "https://github.com/voxpupuli/puppet-archive.git"
     datacat: "https://github.com/richardc/puppet-datacat.git"
+    powershell: "https://github.com/puppetlabs/puppetlabs-powershell.git"
     filebeat: "https://github.com/pcfens/puppet-filebeat.git"
 
   symlinks:

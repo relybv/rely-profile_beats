@@ -2,7 +2,7 @@
   "name": "rely-profile_beats",
   "version": "0.1.0",
   "author": "P. Gomersbach",
-  "summary": "Install and configure elasticsearch",
+  "summary": "Install and configure elasticsearch beats",
   "license": "Apache-2.0",
   "source": "https://github.com/relybv/rely-profile_beats.git",
   "project_page": "https://github.com/relybv/rely-profile_beats",
