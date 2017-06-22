@@ -21,10 +21,14 @@ describe 'profile_beats' do
           it { is_expected.to contain_class('profile_beats::params') }
           it { is_expected.to contain_class('filebeat') }
 
-          it { is_expected.to contain_apt__source('elasticrepo') }
-
           it { is_expected.to contain_filebeat__prospector('syslogs') }
 
+          case facts[:osfamily]
+          when 'Debian'
+            it { is_expected.to contain_apt__source('elasticrepo') }
+          else
+            it { is_expected.not_to contain_apt__source('elasticrepo') }
+          end
         end
       end
     end
