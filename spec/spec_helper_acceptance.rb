@@ -8,7 +8,8 @@ RSpec.configure do |c|
   # Project root
   proj_root = File.expand_path(File.join(File.dirname(__FILE__), '..'))
 
-  # Readable test descriptions
+  c.color = false
+  c.tty = false
   c.formatter = :documentation
 
   # Configure all nodes in nodeset

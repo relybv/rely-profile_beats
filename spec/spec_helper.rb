@@ -5,6 +5,6 @@ include RspecPuppetFacts
 RSpec.configure do |config|
   config.color = false
   config.tty = false
-  config.formatter = :documentation # :progress, :html,
+  config.formatter = :documentation # :progress, :html, :documentation
                                     # :json, CustomFormatterClass
 end
