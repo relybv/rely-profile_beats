@@ -3,5 +3,5 @@ require 'rspec-puppet-facts'
 include RspecPuppetFacts
 
 RSpec.configure do |config|
-  config.color_enabled = false
+  config.color = false
 end
