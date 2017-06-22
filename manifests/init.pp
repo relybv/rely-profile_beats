@@ -1,11 +1,11 @@
 # == Class: profile_beats
 #
-# Full description of class profile_beats here.
+# Install elasticsearch beats. .
 #
 # === Parameters
 #
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
+# [*monitor_address*]
+#   Address to send beats output, default 'localhost'
 #
 class profile_beats
 (
