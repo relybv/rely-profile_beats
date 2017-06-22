@@ -19,8 +19,6 @@ node {
             lint: { sh '/usr/bin/bundle exec rake lint > lint.log' },
             spec: { sh '/usr/bin/bundle exec rake ci:all > spec.log' }
          )
-         step([$class: 'JUnitResultArchiver', testResults: 'spec/reports/*.xml'])
-         junit 'spec/reports/*.xml'
       }
       stage('Documentation') {
          sh '/opt/puppetlabs/bin/puppet resource package yard provider=puppet_gem > doc.log'
@@ -67,5 +65,7 @@ node {
          }
       }
    }
+   step([$class: 'JUnitResultArchiver', testResults: 'spec/reports/*.xml'])
+   junit 'spec/reports/*.xml'
    archiveArtifacts '*.log'
 }
