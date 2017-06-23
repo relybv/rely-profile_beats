@@ -17,9 +17,8 @@ describe 'profile_beats class' do
         class { 'profile_beats': }
         EOS
 
-        # Run it twice and test for idempotency
+        # Run it and test for errors
         apply_manifest(pp, :catch_failures => true)
-#        apply_manifest(pp, :catch_changes  => true)
       end
     end
 
