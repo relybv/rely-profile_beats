@@ -32,9 +32,9 @@ class profile_beats::install {
   class { 'filebeat':
     manage_repo => false,
     outputs     => {
-      'elasticsearch' => {
+      'logstash' => {
       'hosts' => [
-        "http://${profile_beats::monitor_address}:9200",
+        "${profile_beats::monitor_address}:5044",
       ],
       },
     },
