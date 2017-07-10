@@ -10,13 +10,18 @@ class profile_beats::config {
 
   # default prospectors
   filebeat::prospector { 'syslogs':
-    paths    => [
-      '/var/log/auth.log',
+    paths         => [
+      '/var/log/messages',
       '/var/log/syslog',
     ],
-    doc_type => 'log',
-    fields   => {
+    exclude_files => ['.gz$'],
+    doc_type      => 'log',
+    fields        => {
       'prospector' => 'syslogs',
+    },
+    multiline     => {
+      'pattern' => '^\\s',
+      'match'   => 'after',
     },
   }
 
