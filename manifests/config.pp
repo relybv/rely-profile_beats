@@ -8,4 +8,28 @@ class profile_beats::config {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
+  # default prospectors
+  filebeat::prospector { 'syslogs':
+    paths    => [
+      '/var/log/auth.log',
+      '/var/log/syslog',
+    ],
+    doc_type => 'log',
+    fields   => {
+      'prospector' => 'syslogs',
+    },
+  }
+
+  # optional prospecters
+  if defined(Class['role_appl']) {
+    filebeat::prospector { 'appachelogs':
+      paths    => [
+        '/var/log/apache2/*access.log',
+      ],
+      doc_type => 'log',
+      fields   => {
+        'prospector' => 'appachelogs',
+      },
+    }
+  }
 }

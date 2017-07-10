@@ -40,15 +40,4 @@ class profile_beats::install {
     },
   }
 
-  filebeat::prospector { 'syslogs':
-    paths    => [
-      '/var/log/auth.log',
-      '/var/log/syslog',
-    ],
-    doc_type => 'log',
-    fields   => {
-      'prospector' => 'syslogs',
-    },
-  }
-
 }
