@@ -25,6 +25,22 @@ class profile_beats::config {
     },
   }
 
+  filebeat::prospector { 'authlogs':
+    paths         => [
+      '/var/log/auth.log',
+    ],
+    exclude_files => ['.gz$'],
+    doc_type      => 'log',
+    fields        => {
+      'prospector' => 'authlogs',
+    },
+    multiline     => {
+      'pattern' => '^\\s',
+      'match'   => 'after',
+    },
+  }
+
+
   # optional prospecters
   if defined(Class['role_appl']) {
     filebeat::prospector { 'appachelogs':

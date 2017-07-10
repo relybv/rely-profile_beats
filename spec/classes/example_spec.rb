@@ -22,6 +22,7 @@ describe 'profile_beats' do
           it { is_expected.to contain_class('filebeat') }
 
           it { is_expected.to contain_filebeat__prospector('syslogs') }
+          it { is_expected.to contain_filebeat__prospector('authlogs') }
 
           case facts[:osfamily]
           when 'Debian'
