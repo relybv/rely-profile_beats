@@ -46,6 +46,9 @@ class profile_beats::install {
       '/var/log/syslog',
     ],
     doc_type => 'log',
+    fields   => {
+      'prospector' => 'syslogs',
+    },
   }
 
 }
