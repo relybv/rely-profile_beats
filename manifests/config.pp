@@ -8,6 +8,12 @@ class profile_beats::config {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
+  if defined(Class['role_monitor']) {
+    exec { 'install_beats_template':
+      command => '/usr/share/filebeat/scripts/import_dashboards -only-index',
+    }
+  }
+
   # default prospectors
   filebeat::prospector { 'syslogs':
     paths         => [
