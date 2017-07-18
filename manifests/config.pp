@@ -11,6 +11,7 @@ class profile_beats::config {
   if defined(Class['role_monitor']) {
     exec { 'install_beats_template':
       command => '/usr/share/filebeat/scripts/import_dashboards -only-index',
+      require => Class['filebeat'],
     }
   }
 
